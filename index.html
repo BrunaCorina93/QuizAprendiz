@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizAprendiz - Aprendizagem Interativa</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/utilities.css">
+</head>
+<body>
+    <!-- Tela de Loading -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <div class="rocket">🚀</div>
+            <p>Carregando QuizAprendiz...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🎯 QuizAprendiz</h1>
+                <span>Aprendizagem que diverte!</span>
+            </div>
+            <nav class="nav">
+                <button id="home-btn" class="nav-btn active">Início</button>
+                <button id="quizzes-btn" class="nav-btn">Quizzes</button>
+                <button id="ranking-btn" class="nav-btn">Ranking</button>
+                <button id="admin-btn" class="nav-btn">Professor</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Tela Inicial -->
+        <section id="home-screen" class="screen active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h2>Transforme o aprendizado em diversão! 🎮</h2>
+                    <p>Quizzes interativos para todos os encontros de aprendizagem</p>
+                    <button id="start-learning" class="cta-button">
+                        Começar a Aprender 🚀
+                    </button>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-card card-1">📊</div>
+                    <div class="floating-card card-2">🎯</div>
+                    <div class="floating-card card-3">🏆</div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Aprendizagem Ativa</h3>
+                    <p>Engaje os aprendizes com quizzes interativos e feedback imediato</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Conteúdo Personalizado</h3>
+                    <p>Quizzes para todos os encontros do programa de aprendizagem</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Competição Saudável</h3>
+                    <p>Sistema de ranking e conquistas para motivar os aprendizes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela de Quizzes -->
+        <section id="quizzes-screen" class="screen">
+            <div class="screen-header">
+                <h2>📚 Nossos Quizzes</h2>
+                <p>Escolha um tema para começar</p>
+            </div>
+            
+            <div class="quizzes-grid" id="quizzes-grid">
+                <!-- Os quizzes serão carregados via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Tela do Quiz -->
+        <section id="quiz-screen" class="screen">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <h2 id="quiz-title">Quiz Title</h2>
+                        <div class="quiz-meta">
+                            <span id="quiz-category">Categoria</span>
+                            <span id="quiz-difficulty">Dificuldade</span>
+                        </div>
+                    </div>
+                    <div class="quiz-stats">
+                        <div class="stat">
+                            <span class="stat-label">Questão</span>
+                            <span id="current-question">1/10</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Pontuação</span>
+                            <span id="current-score">0</span>
+                        </div>
+                        <div class="stat timer">
+                            <span class="stat-label">Tempo</span>
+                            <span id="quiz-timer">60</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="quiz-progress"></div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-text" id="question-text">
+                        Carregando questão...
+                    </div>
+                    
+                    <div class="options-grid" id="options-container">
+                        <!-- Opções serão inseridas via JavaScript -->
+                    </div>
+
+                    <div class="feedback-container" id="feedback-container">
+                        <!-- Feedback será inserido via JavaScript -->
+                    </div>
+                </div>
+
+                <div class="quiz-controls">
+                    <button id="prev-question" class="control-btn">← Anterior</button>
+                    <button id="next-question" class="control-btn primary">Próxima →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela de Resultados -->
+        <section id="results-screen" class="screen">
+            <div class="results-container">
+                <div class="results-header">
+                    <h2>🎉 Quiz Concluído!</h2>
+                    <div class="score-display">
+                        <span class="score-label">Sua Pontuação</span>
+                        <div class="score-circle">
+                            <span id="final-score">0</span>
+                            <small>pontos</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-details">
+                    <div class="result-stat">
+                        <span class="stat-value" id="correct-answers">0</span>
+                        <span class="stat-label">Corretas</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="stat-value" id="incorrect-answers">0</span>
+                        <span class="stat-label">Incorretas</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="stat-value" id="time-spent">0s</span>
+                        <span class="stat-label">Tempo</span>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="review-quiz" class="action-btn secondary">Revisar Respostas</button>
+                    <button id="new-quiz" class="action-btn primary">Novo Quiz</button>
+                    <button id="share-result" class="action-btn">Compartilhar</button>
+                </div>
+
+                <div class="leaderboard-preview">
+                    <h3>🏆 Ranking do Quiz</h3>
+                    <div id="quiz-leaderboard">
+                        <!-- Ranking será carregado via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela de Ranking -->
+        <section id="ranking-screen" class="screen">
+            <div class="screen-header">
+                <h2>🏆 Ranking Geral</h2>
+                <p>Top aprendizes da plataforma</p>
+            </div>
+            
+            <div class="ranking-container">
+                <div class="ranking-filters">
+                    <button class="filter-btn active">Geral</button>
+                    <button class="filter-btn">Semanal</button>
+                    <button class="filter-btn">Mensal</button>
+                </div>
+                
+                <div class="ranking-list" id="ranking-list">
+                    <!-- Ranking será carregado via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela do Professor -->
+        <section id="admin-screen" class="screen">
+            <div class="screen-header">
+                <h2>👨‍🏫 Painel do Professor</h2>
+                <p>Gerencie quizzes e acompanhe o progresso</p>
+            </div>
+            
+            <div class="admin-panel">
+                <div class="admin-cards">
+                    <div class="admin-card">
+                        <h3>Criar Novo Quiz</h3>
+                        <p>Crie quizzes personalizados para seus encontros</p>
+                        <button id="create-quiz-btn" class="admin-btn">Criar Quiz</button>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <h3>Estatísticas</h3>
+                        <p>Acompanhe o desempenho dos aprendizes</p>
+                        <button id="view-stats-btn" class="admin-btn">Ver Estatísticas</button>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <h3>Gerenciar Quizzes</h3>
+                        <p>Edite ou exclua quizzes existentes</p>
+                        <button id="manage-quizzes-btn" class="admin-btn">Gerenciar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 QuizAprendiz - Desenvolvido para o Programa de Aprendizagem</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/quiz.js"></script>
+    <script src="scripts/admin.js"></script>
+</body>
+</html>
